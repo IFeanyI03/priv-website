@@ -1,111 +1,150 @@
 <template>
-    <div>
-        <section
-            class="relative flex flex-col min-h-screen items-center gap-8 justify-center px-6 text-center"
+    <div
+        class="min-h-screen bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 overflow-y-auto overflow-x-hidden"
+    >
+        <header
+            class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 bg-[#050505]/80 backdrop-blur-md"
         >
-            <div
-                class="max-w-4xl h-40 md:h-48 flex items-center justify-center"
+            <img src="/prive.svg" alt="Privé Logo" class="h-20 md:h-20" />
+            <a
+                href="https://portfolio-ifeanyi03s.vercel.app/"
+                target="_blank"
+                class="text-base font-medium text-white/40 hover:text-white transition-colors flex items-center gap-1"
             >
-                <h1
-                    class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight"
-                >
-                    <transition name="fade-slide" mode="out-in">
-                        <span :key="phraseIndex" class="inline-block">
-                            <span
-                                v-html="formatPhrase(phrases[phraseIndex])"
-                            ></span>
-                        </span>
-                    </transition>
-                </h1>
-            </div>
+                Meet the Dev
+                <span class="material-symbols-outlined">north_east</span>
+            </a>
+        </header>
 
-            <div>
-                <a
-                    href="https://chromewebstore.google.com/detail/ddfeinomekibmkeoekajdeconmeielfh?utm_source=item-share-cb"
-                    target="_blank"
-                    class="inline-block px-8 py-4 text-white font-bold border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)]"
-                >
-                    Add to Browser
-                </a>
-            </div>
-        </section>
-
-        <section
-            class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-20 py-24 bg-[#0a0a0a] relative z-10"
-        >
-            <div
-                v-for="feature in features"
-                :key="feature.title"
-                class="p-8 border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] group"
+        <main class="pt-[120px]">
+            <section
+                class="relative flex flex-col items-center gap-8 justify-center min-h-[70vh] px-6 text-center"
             >
-                <span class="material-symbols-outlined-large text-white mb-4">{{
-                    feature.icon
-                }}</span>
-                <h3 class="text-white/40 font-bold mb-3 text-2xl">
-                    {{ feature.title }}
-                </h3>
-                <p
-                    class="text-white text-base leading-relaxed"
-                    v-html="formatPhrase(feature.desc)"
-                ></p>
-            </div>
-        </section>
-        <section
-            class="max-w-4xl mx-auto px-8 pb-20 pt-10 text-center border-t border-zinc-900/50 relative z-10"
-        >
-            <div class="p-8">
-                <span
-                    class="material-symbols-outlined-large text-white mb-4 block"
-                    >verified_user</span
+                <div
+                    class="max-w-4xl h-40 md:h-48 flex items-center justify-center"
                 >
-                <h2 class="text-3xl font-bold mb-4 text-white">
-                    How We Use Your Google Data
-                </h2>
-                <p class="text-zinc-400 leading-relaxed text-lg mb-6">
-                    <strong>Privé Extension</strong> uses Google OAuth strictly
-                    to authenticate your identity and securely sync your
-                    encrypted password vault across your devices.
-                </p>
-                <ul
-                    class="text-left text-zinc-500 space-y-3 max-w-2xl mx-auto list-disc list-inside"
-                >
-                    <li>
-                        <strong>Authentication Only:</strong> We only request
-                        basic profile access (your email) to create your sync
-                        account.
-                    </li>
-                    <li>
-                        <strong>Zero-Knowledge Sync:</strong> Your vault is
-                        encrypted with your Master PIN on your device
-                        <em>before</em> it is synced. We never see, read, or
-                        sell your passwords.
-                    </li>
-                    <li>
-                        <strong>No Tracking:</strong> We do not track your
-                        browsing history or use your data for advertising.
-                    </li>
-                </ul>
-            </div>
-        </section>
+                    <h1
+                        class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight"
+                    >
+                        <transition name="fade-slide" mode="out-in">
+                            <span :key="phraseIndex" class="inline-block">
+                                <span
+                                    v-html="formatPhrase(phrases[phraseIndex])"
+                                ></span>
+                            </span>
+                        </transition>
+                    </h1>
+                </div>
 
-        <section
-            class="max-w-4xl mx-auto px-8 pt-20 pb-10 text-center relative z-10"
-        >
-            <div class="p-8 rounded-3xl">
-                <h2 class="text-3xl font-bold mb-4 text-white">
-                    About Privé Extension
-                </h2>
-                <p class="text-zinc-300 leading-relaxed text-lg">
-                    The purpose of <strong>Privé Extension</strong> is to
-                    provide users with a secure, local password manager directly
-                    within their browser. Our application allows users to safely
-                    store their login credentials, automatically fill passwords
-                    on recognized websites, and generate secure, expiring links
-                    to share access with friends and family without revealing
-                    the plain-text password.
-                </p>
-            </div>
-        </section>
+                <div>
+                    <a
+                        href="https://chromewebstore.google.com/detail/ddfeinomekibmkeoekajdeconmeielfh"
+                        target="_blank"
+                        class="inline-block px-8 py-4 text-white font-bold border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)]"
+                    >
+                        Add to Browser
+                    </a>
+                </div>
+            </section>
+
+            <section
+                class="max-w-4xl mx-auto px-8 pt-10 pb-10 text-center relative z-10"
+            >
+                <div class="p-8">
+                    <h2 class="text-3xl font-bold mb-6 text-white">
+                        About Privé Extension
+                    </h2>
+                    <p class="text-zinc-300 leading-relaxed text-lg mb-8">
+                        The purpose of <strong>Privé Extension</strong> is to
+                        provide users with a secure, local-first password
+                        management solution directly within the browser. Our
+                        application is designed to simplify digital security by
+                        allowing users to:
+                    </p>
+                    <ul
+                        class="text-left text-zinc-400 space-y-4 max-w-2xl mx-auto mb-4"
+                    >
+                        <li class="flex items-start gap-3">
+                            <span class="text-white font-bold">✓</span>
+                            Safely store and organize login credentials in an
+                            encrypted local vault.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-white font-bold">✓</span>
+                            Automatically detect and fill saved passwords on
+                            recognized login pages.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-white font-bold">✓</span>
+                            Generate secure, expiring links to share access with
+                            trusted contacts without exposing the raw text.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-20 py-24 bg-[#0a0a0a] relative z-10"
+            >
+                <div
+                    v-for="feature in features"
+                    :key="feature.title"
+                    class="p-8 border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] group"
+                >
+                    <span
+                        class="material-symbols-outlined-large text-white mb-4"
+                        >{{ feature.icon }}</span
+                    >
+                    <h3 class="text-white/40 font-bold mb-3 text-2xl">
+                        {{ feature.title }}
+                    </h3>
+                    <p
+                        class="text-white text-base leading-relaxed"
+                        v-html="formatPhrase(feature.desc)"
+                    ></p>
+                </div>
+            </section>
+
+            <section
+                class="max-w-4xl mx-auto px-8 pb-24 pt-10 text-center relative z-10"
+            >
+                <div class="p-8">
+                    <span
+                        class="material-symbols-outlined-large text-white mb-4 block"
+                        >verified_user</span
+                    >
+                    <h2 class="text-3xl font-bold mb-4 text-white">
+                        How We Use Your Google Data
+                    </h2>
+                    <p class="text-zinc-400 leading-relaxed text-lg mb-6">
+                        <strong>Privé Extension</strong> requests access to your
+                        Google Account solely to provide a seamless sync
+                        experience. We are committed to transparency regarding
+                        your data:
+                    </p>
+                    <ul
+                        class="text-left text-zinc-500 space-y-3 max-w-2xl mx-auto list-disc list-inside"
+                    >
+                        <li>
+                            <strong>Identity Verification:</strong> We use
+                            Google OAuth to identify your account and associate
+                            it with your encrypted vault.
+                        </li>
+                        <li>
+                            <strong>Zero-Knowledge Encryption:</strong> All
+                            password data is encrypted on your device using your
+                            Master PIN <em>before</em> sync. We never have
+                            access to your raw data.
+                        </li>
+                        <li>
+                            <strong>Data Privacy:</strong> We do not access your
+                            contacts, files, or emails. We do not share or sell
+                            your information to third parties.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
     </div>
 </template>
 
@@ -154,6 +193,11 @@ onMounted(() => {
 </script>
 
 <style>
+/* Global Font */
+.font-titillium {
+    font-family: "Titillium Web", sans-serif;
+}
+
 /* Masked Word Container using Grid */
 .masked-word {
     display: inline-grid;
@@ -215,5 +259,13 @@ onMounted(() => {
     scale: 0.8;
     filter: blur(10px);
     transform: translateY(-20px);
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+    font-size: 16px;
+}
+.material-symbols-outlined-large {
+    font-size: 48px;
 }
 </style>
