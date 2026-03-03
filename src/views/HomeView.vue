@@ -50,6 +50,43 @@
                 ></p>
             </div>
         </section>
+        <section
+            class="w-full mx-auto px-8 py-10 text-center border-t border-white/10 relative z-10"
+        >
+            <div class="bg-zinc-950/50 p-8 rounded-3xl border border-zinc-800">
+                <span
+                    class="material-symbols-outlined-large text-white mb-4 block"
+                    >verified_user</span
+                >
+                <h2 class="text-3xl font-bold mb-4 text-white">
+                    How We Use Your Google Data
+                </h2>
+                <p class="text-white-40 leading-relaxed text-lg mb-6">
+                    Privé uses Google OAuth strictly to authenticate your
+                    identity and securely sync your encrypted password vault
+                    across your devices.
+                </p>
+                <ul
+                    class="text-left text-white/80 space-y-3 max-w-2xl mx-auto list-disc list-inside"
+                >
+                    <li>
+                        <strong>Authentication Only:</strong> We only request
+                        basic profile access (your email) to create your sync
+                        account.
+                    </li>
+                    <li>
+                        <strong>Zero-Knowledge Sync:</strong> Your vault is
+                        encrypted with your Master PIN on your device
+                        <em>before</em> it is synced. We never see, read, or
+                        sell your passwords.
+                    </li>
+                    <li>
+                        <strong>No Tracking:</strong> We do not track your
+                        browsing history or use your data for advertising.
+                    </li>
+                </ul>
+            </div>
+        </section>
     </div>
 </template>
 
