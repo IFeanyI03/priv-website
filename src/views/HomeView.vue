@@ -51,9 +51,9 @@
             </div>
         </section>
         <section
-            class="w-full mx-auto px-8 py-10 text-center border-t border-white/10 relative z-10"
+            class="max-w-4xl mx-auto px-8 pb-20 pt-10 text-center border-t border-zinc-900/50 relative z-10"
         >
-            <div class="bg-zinc-950/50 p-8 rounded-3xl border border-zinc-800">
+            <div class="p-8">
                 <span
                     class="material-symbols-outlined-large text-white mb-4 block"
                     >verified_user</span
@@ -61,13 +61,13 @@
                 <h2 class="text-3xl font-bold mb-4 text-white">
                     How We Use Your Google Data
                 </h2>
-                <p class="text-white-40 leading-relaxed text-lg mb-6">
-                    Privé uses Google OAuth strictly to authenticate your
-                    identity and securely sync your encrypted password vault
-                    across your devices.
+                <p class="text-zinc-400 leading-relaxed text-lg mb-6">
+                    <strong>Privé Extension</strong> uses Google OAuth strictly
+                    to authenticate your identity and securely sync your
+                    encrypted password vault across your devices.
                 </p>
                 <ul
-                    class="text-left text-white/80 space-y-3 max-w-2xl mx-auto list-disc list-inside"
+                    class="text-left text-zinc-500 space-y-3 max-w-2xl mx-auto list-disc list-inside"
                 >
                     <li>
                         <strong>Authentication Only:</strong> We only request
@@ -85,6 +85,25 @@
                         browsing history or use your data for advertising.
                     </li>
                 </ul>
+            </div>
+        </section>
+
+        <section
+            class="max-w-4xl mx-auto px-8 pt-20 pb-10 text-center relative z-10"
+        >
+            <div class="p-8 rounded-3xl">
+                <h2 class="text-3xl font-bold mb-4 text-white">
+                    About Privé Extension
+                </h2>
+                <p class="text-zinc-300 leading-relaxed text-lg">
+                    The purpose of <strong>Privé Extension</strong> is to
+                    provide users with a secure, local password manager directly
+                    within their browser. Our application allows users to safely
+                    store their login credentials, automatically fill passwords
+                    on recognized websites, and generate secure, expiring links
+                    to share access with friends and family without revealing
+                    the plain-text password.
+                </p>
             </div>
         </section>
     </div>
