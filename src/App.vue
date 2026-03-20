@@ -9,7 +9,7 @@
                 <img
                     src="/prive.svg"
                     alt="Privé Logo"
-                    class="h-20 md:h-20 transition-transform hover:scale-105"
+                    class="h-10 md:h-20 transition-transform hover:scale-105"
                 />
             </router-link>
             <a
@@ -37,6 +37,12 @@
                 <p class="text-zinc-600 text-base tracking-widest uppercase">
                     &copy; 2026 PRIVÉ EXTENSION. SECURE BY DESIGN.
                 </p>
+                <router-link
+                    to="/how-to-use"
+                    class="text-white/40 hover:text-white text-base uppercase tracking-tighter transition-colors underline underline-offset-4 decoration-zinc-800"
+                >
+                    How to Use
+                </router-link>
                 <router-link
                     to="/privacy"
                     class="text-white/40 hover:text-white text-base uppercase tracking-tighter transition-colors underline underline-offset-4 decoration-zinc-800"

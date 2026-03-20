@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-3xl mx-auto px-6 py-12 md:py-40 text-left">
+    <div class="max-w-3xl mx-auto px-6 py-25 md:py-40 text-left">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Privacy Policy
         </h1>
@@ -15,9 +15,9 @@
                 </h2>
                 <p class="text-white/40 leading-relaxed text-lg">
                     Privé stores your encrypted passwords and vault data. This
-                    data is synced to our secure backend (Supabase) but is
-                    encrypted on your device using your Master PIN before
-                    transmission. We cannot see, read, or access your passwords.
+                    data is synced to our secure backend but is encrypted on
+                    your device using your Master PIN before transmission. We
+                    cannot see, read, or access your passwords.
                 </p>
             </section>
 

@@ -2,10 +2,10 @@
     <div
         class="min-h-screen bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 overflow-y-auto overflow-x-hidden"
     >
-        <header
+        <!-- <header
             class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 bg-[#050505]/80 backdrop-blur-md"
         >
-            <img src="/prive.svg" alt="Privé Logo" class="h-20 md:h-20" />
+            <img src="/prive.svg" alt="Privé Logo" class="h-10 md:h-20" />
             <a
                 href="https://portfolio-ifeanyi03s.vercel.app/"
                 target="_blank"
@@ -14,17 +14,17 @@
                 Meet the Dev
                 <span class="material-symbols-outlined">north_east</span>
             </a>
-        </header>
+        </header> -->
 
-        <main class="pt-[120px]">
+        <main class="pt-30">
             <section
                 class="relative flex flex-col items-center gap-8 justify-center min-h-[70vh] px-6 text-center"
             >
                 <div
-                    class="max-w-4xl h-40 md:h-48 flex items-center justify-center"
+                    class="max-w-4xl h-fit md:h-48 flex items-center justify-center"
                 >
                     <h1
-                        class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight"
+                        class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
                     >
                         <transition name="fade-slide" mode="out-in">
                             <span :key="phraseIndex" class="inline-block">
