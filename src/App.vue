@@ -1,9 +1,11 @@
+<script setup lang="ts"></script>
+
 <template>
     <div
         class="min-h-screen bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 flex flex-col"
     >
         <header
-            class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 bg-[#050505]/80 backdrop-blur-md"
+            class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 backdrop-blur-sm"
         >
             <router-link to="/">
                 <img
@@ -22,7 +24,7 @@
             </a>
         </header>
 
-        <main class="">
+        <main class="z-20">
             <router-view v-slot="{ Component }">
                 <transition name="page-fade" mode="out-in">
                     <component :is="Component" />
@@ -30,9 +32,7 @@
             </router-view>
         </main>
 
-        <footer
-            class="py-12 mt-auto text-center border-t border-zinc-900 bg-[#050505]"
-        >
+        <footer class="py-12 z-20 mt-auto text-center border-t border-zinc-900">
             <div class="flex flex-col items-center gap-2">
                 <p class="text-zinc-600 text-base tracking-widest uppercase">
                     &copy; 2026 PRIVÉ EXTENSION. SECURE BY DESIGN.

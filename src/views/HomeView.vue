@@ -1,51 +1,41 @@
 <template>
     <div
-        class="min-h-screen bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 overflow-y-auto overflow-x-hidden"
+        class="min-h-screen relative bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 overflow-y-auto overflow-x-hidden"
     >
-        <!-- <header
-            class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 bg-[#050505]/80 backdrop-blur-md"
-        >
-            <img src="/prive.svg" alt="Privé Logo" class="h-10 md:h-20" />
-            <a
-                href="https://portfolio-ifeanyi03s.vercel.app/"
-                target="_blank"
-                class="text-base font-medium text-white/40 hover:text-white transition-colors flex items-center gap-1"
-            >
-                Meet the Dev
-                <span class="material-symbols-outlined">north_east</span>
-            </a>
-        </header> -->
-
         <main class="pt-30">
-            <section
-                class="relative flex flex-col items-center gap-8 justify-center min-h-[70vh] px-6 text-center"
+            <BackgroundGridBeam
+                className="flex flex-col items-center gap-10 justify-center min-h-[70vh] px-6 text-center w-full"
             >
-                <div
-                    class="max-w-4xl h-fit md:h-48 flex items-center justify-center"
-                >
-                    <h1
-                        class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
+                <div class="relative z-20 flex flex-col gap-8">
+                    <div
+                        class="max-w-4xl mx-auto h-fit md:h-48 flex items-center justify-center"
                     >
-                        <transition name="fade-slide" mode="out-in">
-                            <span :key="phraseIndex" class="inline-block">
-                                <span
-                                    v-html="formatPhrase(phrases[phraseIndex])"
-                                ></span>
-                            </span>
-                        </transition>
-                    </h1>
-                </div>
+                        <h1
+                            class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
+                        >
+                            <transition name="fade-slide" mode="out-in">
+                                <span :key="phraseIndex" class="inline-block">
+                                    <span
+                                        v-html="
+                                            formatPhrase(phrases[phraseIndex])
+                                        "
+                                    ></span>
+                                </span>
+                            </transition>
+                        </h1>
+                    </div>
 
-                <div>
-                    <a
-                        href="https://chromewebstore.google.com/detail/ddfeinomekibmkeoekajdeconmeielfh"
-                        target="_blank"
-                        class="inline-block px-8 py-4 text-white font-bold border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)]"
-                    >
-                        Add to Browser
-                    </a>
+                    <div class="relative z-20">
+                        <a
+                            href="https://chromewebstore.google.com/detail/ddfeinomekibmkeoekajdeconmeielfh"
+                            target="_blank"
+                            class="inline-block px-8 py-4 text-white font-bold border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] bg-[#050505]"
+                        >
+                            Add to Browser
+                        </a>
+                    </div>
                 </div>
-            </section>
+            </BackgroundGridBeam>
 
             <section
                 class="max-w-4xl mx-auto px-8 pt-10 pb-10 text-center relative z-10"
@@ -150,6 +140,8 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+// FIXED: Ensure this points to your new Grid Beam component file
+import BackgroundGridBeam from "../components/BackgroundGridBeam.vue";
 
 const phrases = [
     "Password manager that stays true to security.",

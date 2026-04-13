@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import PrivacyView from "../views/PrivacyView.vue";
 import SetupView from "../views/SetupView.vue";
 import UsageView from "../views/UsageView.vue";
+import ShareView from "../views/ShareView.vue";
+import NotFoundView from "../views/NotFoundView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,17 @@ const router = createRouter({
             path: "/how-to-use",
             name: "usage",
             component: UsageView,
+        },
+        {
+            path: "/share",
+            name: "share",
+            component: ShareView,
+        },
+
+        {
+            path: "/:pathMatch(.*)*",
+            name: "not-found",
+            component: NotFoundView,
         },
     ],
     scrollBehavior(to, from, savedPosition) {
