@@ -199,6 +199,17 @@
                             class="w-full h-auto opacity-80 hover:opacity-100 transition-opacity"
                         />
                     </div>
+
+                    <br />
+                    <p class="text-zinc-400 leading-relaxed mb-6">
+                        Select your Google account from the list of available
+                        accounts. If you are not already signed in to Chrome,
+                        you will be prompted to enter your Google credentials.
+                        This process is handled entirely by Google's secure
+                        authentication system, ensuring that your login
+                        information is never exposed to our servers or stored
+                        locally on your device.
+                    </p>
                     <div
                         class="mt-6 rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/50"
                     >
