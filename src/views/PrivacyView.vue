@@ -99,21 +99,6 @@
                         class="bg-zinc-900/50 p-6 rounded-[40px] border border-zinc-800"
                     >
                         <h3 class="text-white/80 font-bold text-xl mb-2">
-                            Tabs
-                        </h3>
-                        <p class="text-white/40">
-                            Used to read the URL of your currently open tabs.
-                            This is necessary to identify the website you are
-                            visiting so we can find and suggest the matching
-                            encrypted credentials from your vault. We do not
-                            track or store your browsing history.
-                        </p>
-                    </div>
-
-                    <div
-                        class="bg-zinc-900/50 p-6 rounded-[40px] border border-zinc-800"
-                    >
-                        <h3 class="text-white/80 font-bold text-xl mb-2">
                             ActiveTab
                         </h3>
                         <p class="text-white/40">
