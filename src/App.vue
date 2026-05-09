@@ -33,10 +33,11 @@
         </main>
 
         <footer class="py-12 z-20 mt-auto text-center border-t border-zinc-900">
-            <div class="flex flex-col items-center gap-2">
+            <div class="flex flex-col  items-center gap-2">
                 <p class="text-zinc-600 text-base tracking-widest uppercase">
                     &copy; 2026 PRIVÉ EXTENSION. SECURE BY DESIGN.
                 </p>
+                <div class="flex flex-col md:flex-row gap-2">
                 <router-link
                     to="/how-to-use"
                     class="text-white/40 hover:text-white text-base uppercase tracking-tighter transition-colors underline underline-offset-4 decoration-zinc-800"
@@ -49,6 +50,13 @@
                 >
                     Privacy Policy
                 </router-link>
+                <router-link
+                    to="/delete-account"
+                    class="text-white/40 hover:text-white text-base uppercase tracking-tighter transition-colors underline underline-offset-4 decoration-zinc-800"
+                >
+                    Delete Account
+                </router-link>
+                </div>
             </div>
         </footer>
     </div>

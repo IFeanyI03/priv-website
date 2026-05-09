@@ -37,49 +37,14 @@
                 </div>
             </BackgroundGridBeam>
 
+            <!-- FEATURES SECTION -->
             <section
-                class="max-w-4xl mx-auto px-8 pt-10 pb-10 text-center relative z-10"
-            >
-                <div class="p-8">
-                    <h2 class="text-3xl font-bold mb-6 text-white">
-                        About Privé Extension
-                    </h2>
-                    <p class="text-zinc-300 leading-relaxed text-lg mb-8">
-                        The purpose of <strong>Privé Extension</strong> is to
-                        provide users with a secure, local-first password
-                        management solution directly within the browser. Our
-                        application is designed to simplify digital security by
-                        allowing users to:
-                    </p>
-                    <ul
-                        class="text-left text-zinc-400 space-y-4 max-w-2xl mx-auto mb-4"
-                    >
-                        <li class="flex items-start gap-3">
-                            <span class="text-white font-bold">✓</span>
-                            Safely store and organize login credentials in an
-                            encrypted local vault.
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-white font-bold">✓</span>
-                            Automatically detect and fill saved passwords on
-                            recognized login pages.
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-white font-bold">✓</span>
-                            Generate secure, expiring links to share access with
-                            trusted contacts without exposing the raw text.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section
-                class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-20 py-24 bg-[#0a0a0a] relative z-10"
+                class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-20 py-24 bg-[#0a0a0a]/50 relative z-10"
             >
                 <div
                     v-for="feature in features"
                     :key="feature.title"
-                    class="p-8 border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] group"
+                    class="p-8 border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] group bg-white/[0.01] backdrop-blur-md"
                 >
                     <span
                         class="material-symbols-outlined-large text-white mb-4"
@@ -95,43 +60,122 @@
                 </div>
             </section>
 
-            <section
-                class="max-w-4xl mx-auto px-8 pb-24 pt-10 text-center relative z-10"
-            >
-                <div class="p-8">
-                    <span
-                        class="material-symbols-outlined-large text-white mb-4 block"
-                        >verified_user</span
+            <!-- SECURITY & ABOUT SECTION -->
+            <section class="max-w-6xl mx-auto px-8 py-20 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- About Card -->
+                    <div
+                        class="p-10 border-2 border-white/10 rounded-[40px] bg-white/[0.02] backdrop-blur-xl transition-all hover:shadow-[0_0_40px_rgba(255,255,255,0.05)]"
                     >
-                    <h2 class="text-3xl font-bold mb-4 text-white">
-                        How We Use Your Google Data
-                    </h2>
-                    <p class="text-zinc-400 leading-relaxed text-lg mb-6">
-                        <strong>Privé Extension</strong> requests access to your
-                        Google Account solely to provide a seamless sync
-                        experience. We are committed to transparency regarding
-                        your data:
-                    </p>
-                    <ul
-                        class="text-left text-zinc-500 space-y-3 max-w-2xl mx-auto list-disc list-inside"
+                        <div
+                            class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >info</span
+                            >
+                        </div>
+                        <h2 class="text-3xl font-bold mb-6 text-white">
+                            About Privé Extension
+                        </h2>
+                        <p class="text-zinc-400 leading-relaxed text-lg mb-8">
+                            Privé is a local-first password vault designed to
+                            give you absolute control over your digital keys. By
+                            combining military-grade encryption with the
+                            convenience of a browser extension, we enable you
+                            to:
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <span class="material-symbols-outlined"
+                                    >check</span
+                                >
+                                <span>Encrypted local-only storage</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <span class="material-symbols-outlined"
+                                    >check</span
+                                >
+                                <span>Intelligent form auto-fill</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <span   class="material-symbols-outlined"
+                                    >check</span
+                                >
+                                <span>Zero-knowledge link sharing</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Google Data Card -->
+                    <div
+                        class="p-10 border-2 border-white/10 rounded-[40px] bg-white/[0.02] backdrop-blur-xl transition-all hover:shadow-[0_0_40px_rgba(255,255,255,0.05)]"
                     >
-                        <li>
-                            <strong>Identity Verification:</strong> We use
-                            Google OAuth to identify your account and associate
-                            it with your encrypted vault.
-                        </li>
-                        <li>
-                            <strong>Zero-Knowledge Encryption:</strong> All
-                            password data is encrypted on your device using your
-                            Master PIN <em>before</em> sync. We never have
-                            access to your raw data.
-                        </li>
-                        <li>
-                            <strong>Data Privacy:</strong> We do not access your
-                            contacts, files, or emails. We do not share or sell
-                            your information to third parties.
-                        </li>
-                    </ul>
+                        <div
+                            class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >cloud_sync</span
+                            >
+                        </div>
+                        <h2 class="text-3xl font-bold mb-6 text-white">
+                            Google Data Transparency
+                        </h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 mt-1">
+                                    <span
+                                        class="material-symbols-outlined text-white/40"
+                                        >fingerprint</span
+                                    >
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">
+                                        Identity Verification
+                                    </h4>
+                                    <p class="text-zinc-500 text-sm">
+                                        We use Google OAuth solely to identify
+                                        your account and anchor your encrypted
+                                        vault.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 mt-1">
+                                    <span
+                                        class="material-symbols-outlined text-white/40"
+                                        >shield_lock</span
+                                    >
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">
+                                        Zero-Knowledge Sync
+                                    </h4>
+                                    <p class="text-zinc-500 text-sm">
+                                        Data is encrypted with your Master PIN
+                                        locally. We never see your raw
+                                        passwords.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 mt-1">
+                                    <span
+                                        class="material-symbols-outlined text-white/40"
+                                        >no_accounts</span
+                                    >
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">
+                                        Privacy First
+                                    </h4>
+                                    <p class="text-zinc-500 text-sm">
+                                        We do not access your files, emails, or
+                                        contacts. Your data is yours alone.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

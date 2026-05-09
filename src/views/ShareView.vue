@@ -90,6 +90,13 @@ const handleExtensionResponse = (event) => {
                     "Credential successfully saved to your Vault.";
                 successMessageText.value =
                     "The share access is now secure in your personal extension.";
+                
+                // Clear the hash from the URL so users don't see the IDs after it's saved
+                window.history.replaceState(
+                    null,
+                    "",
+                    window.location.pathname + window.location.search,
+                );
             } else {
                 successMessage.value = "Link decrypted.";
                 successMessageText.value =

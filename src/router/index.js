@@ -4,6 +4,7 @@ import PrivacyView from "../views/PrivacyView.vue";
 import SetupView from "../views/SetupView.vue";
 import UsageView from "../views/UsageView.vue";
 import ShareView from "../views/ShareView.vue";
+import DeleteAccountView from "../views/DeleteAccountView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
             path: "/share",
             name: "share",
             component: ShareView,
+        },
+        {
+            path: "/delete-account",
+            name: "delete-account",
+            component: DeleteAccountView,
         },
 
         {
