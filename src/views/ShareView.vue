@@ -34,6 +34,8 @@
                     {{
                         successMessage
                             ? "Secure Connection Established"
+                            : errorMessage
+                            ? "Access Denied"
                             : "Unlocking secure access..."
                     }}
                 </h2>
@@ -41,24 +43,11 @@
                     {{
                         successMessage
                             ? successMessageText
+                            : errorMessage
+                            ? "We could not securely resolve this link."
                             : "Please wait while Privé securely routes your credential."
                     }}
                 </p>
-            </div>
-
-            <div
-                v-if="errorMessage"
-                class="p-4 mt-6 bg-red-100 flex items-center gap-2 text-red-900 rounded-lg text-base border border-red-500/20"
-            >
-                <span class="material-symbols-outlined">info</span>
-                {{ errorMessage }}
-            </div>
-
-            <div
-                v-if="successMessage"
-                class="p-4 mt-6 bg-green-100 text-green-900 rounded-lg text-base border border-green-500/20"
-            >
-                {{ successMessage }}
             </div>
         </div>
     </BackgroundGridBeam>
@@ -66,6 +55,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { toast } from "vue-sonner";
 import BackgroundGridBeam from "../components/BackgroundGridBeam.vue";
 
 const errorMessage = ref("");
@@ -86,10 +76,9 @@ const handleExtensionResponse = (event) => {
 
         if (event.data.success) {
             if (event.data.type === "SAVE_COMPLETE") {
-                successMessage.value =
-                    "Credential successfully saved to your Vault.";
-                successMessageText.value =
-                    "The share access is now secure in your personal extension.";
+                successMessage.value = "Credential successfully saved to your Vault.";
+                successMessageText.value = "The share access is now secure in your personal extension.";
+                toast.success("Credential successfully saved to your Vault.");
                 
                 // Clear the hash from the URL so users don't see the IDs after it's saved
                 window.history.replaceState(
@@ -99,17 +88,17 @@ const handleExtensionResponse = (event) => {
                 );
             } else {
                 successMessage.value = "Link decrypted.";
-                successMessageText.value =
-                    "Please confirm the save in your browser extension modal.";
+                successMessageText.value = "Please confirm the save in your browser extension modal.";
+                toast.success("Link decrypted.");
             }
             errorMessage.value = "";
         } else {
             if (event.data.locked) {
-                errorMessage.value =
-                    "Vault locked. Please click the Privé extension icon and enter your PIN to continue.";
+                errorMessage.value = "Vault locked. Please click the Privé extension icon and enter your PIN to continue.";
+                toast.error("Vault locked", { description: "Please enter your PIN in the extension." });
             } else {
-                errorMessage.value =
-                    event.data.error || "Failed to unlock the link.";
+                errorMessage.value = event.data.error || "Failed to unlock the link.";
+                toast.error("Failed to unlock link", { description: errorMessage.value });
             }
             successMessage.value = "";
         }

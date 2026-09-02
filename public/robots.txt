@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prive-extension.com/sitemap.xml

@@ -184,8 +184,40 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useHead } from "@unhead/vue";
 // FIXED: Ensure this points to your new Grid Beam component file
 import BackgroundGridBeam from "../components/BackgroundGridBeam.vue";
+
+useHead({
+  title: 'The Most Secure Password Manager Extension',
+  meta: [
+    { name: 'description', content: 'Privé is a free, secure password manager extension featuring local zero-knowledge AES encryption. Auto-fill passwords and share credentials securely with one click.' },
+    { name: 'keywords', content: 'password manager, secure password manager, free password manager, chrome password extension, local encryption, zero-knowledge vault' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Privé Extension",
+        "operatingSystem": "Chrome, Edge, Brave",
+        "applicationCategory": "BrowserExtension, SecurityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "A lightweight, privacy-first password manager. Encrypt your credentials locally with zero-knowledge architecture.",
+        "featureList": [
+          "Zero-knowledge local AES encryption",
+          "Secure credential sharing links",
+          "Form auto-fill"
+        ]
+      })
+    }
+  ]
+});
 
 const phrases = [
     "Password manager that stays true to security.",

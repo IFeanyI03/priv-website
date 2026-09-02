@@ -1,9 +1,55 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Toaster } from 'vue-sonner'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  titleTemplate: (title) => title ? `${title} | Privé` : 'Privé | Security Made Simple',
+  meta: [
+    { name: 'description', content: 'A lightweight, privacy-first password manager. Encrypt your credentials locally with zero-knowledge architecture.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://prive-extension.com/' },
+    { property: 'og:title', content: 'Privé: Security Made Simple' },
+    { property: 'og:description', content: 'Securely store and share credentials without the bloat. Built with local AES encryption.' },
+    { property: 'og:image', content: 'https://res.cloudinary.com/dahlcyt3t/image/upload/q_auto/f_auto/v1776214452/web-screenshot_zkkl2g.png' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Privé | Privacy-First Password Management' },
+    { name: 'twitter:description', content: 'Lightweight password management with one-click auto-fill and secure sharing.' },
+    { name: 'twitter:image', content: 'https://res.cloudinary.com/dahlcyt3t/image/upload/q_auto/f_auto/v1776214452/web-screenshot_zkkl2g.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://prive-extension.com' }
+  ]
+})
+</script>
 
 <template>
     <div
         class="min-h-screen bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 flex flex-col"
     >
+        <Toaster 
+            position="bottom-right" 
+            theme="dark" 
+            :toastOptions="{
+                style: {
+                    background: '#1e1e1e',
+                    color: 'white',
+                    borderRadius: '10px',
+                    border: '1px solid #333',
+                    fontFamily: '&quot;Titillium Web&quot;, sans-serif',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    minHeight: 'auto'
+                },
+                classNames: {
+                    toast: 'group',
+                    title: 'text-[14px] font-semibold',
+                    description: 'text-[12px] text-white/70',
+                    error: '!border-[#ef4444]',
+                    success: '!border-[#22c55e]',
+                    info: '!border-[#3b82f6]'
+                }
+            }"
+        />
         <header
             class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-6 backdrop-blur-sm"
         >
