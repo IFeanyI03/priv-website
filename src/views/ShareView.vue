@@ -3,51 +3,66 @@
         class="min-h-screen flex flex-col items-center justify-center px-4"
     >
         <div
-            class="max-w-md mx-auto w-full text-center space-y-6 relative z-20"
+            class="max-w-md mx-auto w-full text-center relative z-20"
         >
-            <div
-                v-if="!errorMessage && !successMessage"
-                class="relative flex justify-center items-center"
-            >
+            <div class="apple-glass-card rounded-[32px] p-8 md:p-10 space-y-6">
+                <!-- Loading State -->
                 <div
-                    class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white opacity-20"
-                ></div>
-                <div class="absolute animate-pulse">
-                    <svg
-                        class="w-8 h-8 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                        ></path>
-                    </svg>
+                    v-if="!errorMessage && !successMessage"
+                    class="relative flex justify-center items-center py-4"
+                >
+                    <div
+                        class="animate-spin rounded-full h-14 w-14 border-t-2 border-b-2 border-white/40"
+                    ></div>
+                    <div class="absolute">
+                        <span class="material-symbols-outlined text-white text-2xl">lock</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="flex flex-col gap-1">
-                <h2 class="text-2xl font-bold text-white">
-                    {{
-                        successMessage
-                            ? "Secure Connection Established"
-                            : errorMessage
-                            ? "Access Denied"
-                            : "Unlocking secure access..."
-                    }}
-                </h2>
-                <p class="text-white/40">
-                    {{
-                        successMessage
-                            ? successMessageText
-                            : errorMessage
-                            ? "We could not securely resolve this link."
-                            : "Please wait while Privé securely routes your credential."
-                    }}
-                </p>
+                <!-- Success State Icon -->
+                <div v-else-if="successMessage" class="flex justify-center py-2">
+                    <div class="w-14 h-14 rounded-full border border-white/20 bg-white/10 flex items-center justify-center text-white shadow-[0_0_24px_rgba(255,255,255,0.2)]">
+                        <span class="material-symbols-outlined text-3xl">check</span>
+                    </div>
+                </div>
+
+                <!-- Error State Icon (Preserved Red for Alert) -->
+                <div v-else-if="errorMessage" class="flex justify-center py-2">
+                    <div class="w-14 h-14 rounded-full border border-red-500/30 bg-red-500/10 flex items-center justify-center text-red-400 shadow-[0_0_24px_rgba(239,68,68,0.2)]">
+                        <span class="material-symbols-outlined text-3xl">gpp_maybe</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2 text-center">
+                    <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight">
+                        {{
+                            successMessage
+                                ? "Secure Connection Established"
+                                : errorMessage
+                                ? "Access Denied"
+                                : "Unlocking secure access..."
+                        }}
+                    </h2>
+                    <p class="text-white/50 text-sm leading-relaxed">
+                        {{
+                            successMessage
+                                ? successMessageText
+                                : errorMessage
+                                ? errorMessage
+                                : "Please wait while Privé securely routes your credential."
+                        }}
+                    </p>
+                </div>
+
+                <div v-if="errorMessage" class="pt-2">
+                    <router-link
+                        to="/"
+                        class="apple-button inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full border border-white/15 bg-white/10 text-white text-xs font-semibold hover:bg-white/20"
+                    >
+                        <span class="material-symbols-outlined text-xs">arrow_back</span>
+                        <span>Back to Home</span>
+                    </router-link>
+                </div>
             </div>
         </div>
     </BackgroundGridBeam>
@@ -55,8 +70,19 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useHead } from "@unhead/vue";
 import { toast } from "vue-sonner";
 import BackgroundGridBeam from "../components/BackgroundGridBeam.vue";
+
+useHead({
+    title: "Secure Share Access",
+    meta: [
+        {
+            name: "description",
+            content: "Securely unlock and save credentials shared with you via Privé.",
+        },
+    ],
+});
 
 const errorMessage = ref("");
 const successMessage = ref("");

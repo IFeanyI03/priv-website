@@ -1,17 +1,17 @@
 <template>
     <div
-        class="min-h-screen relative bg-[#050505] text-white font-titillium selection:bg-indigo-500/30 overflow-y-auto overflow-x-hidden"
+        class="min-h-screen relative bg-[#050505] text-white font-titillium selection:bg-white/20 selection:text-white overflow-y-auto overflow-x-hidden"
     >
-        <main class="pt-30">
+        <main class="pt-28 md:pt-36">
             <BackgroundGridBeam
                 className="flex flex-col items-center gap-10 justify-center min-h-[70vh] px-6 text-center w-full"
             >
-                <div class="relative z-20 flex flex-col gap-8">
+                <div class="relative z-20 flex flex-col gap-8 max-w-4xl mx-auto">
                     <div
-                        class="max-w-4xl mx-auto h-fit md:h-48 flex items-center justify-center"
+                        class="mx-auto h-fit md:h-44 flex items-center justify-center"
                     >
                         <h1
-                            class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
+                            class="display-title text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-white"
                         >
                             <transition name="fade-slide" mode="out-in">
                                 <span :key="phraseIndex" class="inline-block">
@@ -25,13 +25,14 @@
                         </h1>
                     </div>
 
-                    <div class="relative z-20">
+                    <div class="relative z-20 flex justify-center">
                         <a
                             href="https://chromewebstore.google.com/detail/ddfeinomekibmkeoekajdeconmeielfh"
                             target="_blank"
-                            class="inline-block px-8 py-4 text-white font-bold border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] bg-[#050505]"
+                            class="apple-button inline-flex items-center gap-2.5 px-8 py-3.5 text-white font-semibold text-base rounded-full border border-white/20 bg-white/[0.06] hover:bg-white/[0.12] hover:border-white/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_32px_-8px_rgba(0,0,0,0.8)] backdrop-blur-xl"
                         >
-                            Add to Browser
+                            <span>Add to Browser</span>
+                            <span class="material-symbols-outlined text-sm">north_east</span>
                         </a>
                     </div>
                 </div>
@@ -39,68 +40,63 @@
 
             <!-- FEATURES SECTION -->
             <section
-                class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-20 py-24 bg-[#0a0a0a]/50 relative z-10"
+                class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 md:px-20 py-24 bg-[#0a0a0a]/40 relative z-10 border-t border-white/[0.06]"
             >
                 <div
                     v-for="feature in features"
                     :key="feature.title"
-                    class="p-8 border-2 border-white/10 rounded-[40px] transition-all transform hover:shadow-[0_0_40px_rgba(255,255,255,0.10)] group bg-white/[0.01] backdrop-blur-md"
+                    class="p-8 rounded-[32px] apple-glass-card group text-left flex flex-col justify-between"
                 >
-                    <span
-                        class="material-symbols-outlined-large text-white mb-4"
-                        >{{ feature.icon }}</span
-                    >
-                    <h3 class="text-white/40 font-bold mb-3 text-2xl">
-                        {{ feature.title }}
-                    </h3>
-                    <p
-                        class="text-white text-base leading-relaxed"
-                        v-html="formatPhrase(feature.desc)"
-                    ></p>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center mb-6 text-white group-hover:bg-white/[0.08] transition-colors">
+                            <span class="material-symbols-outlined text-2xl">{{ feature.icon }}</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-3 text-xl tracking-tight">
+                            {{ feature.title }}
+                        </h3>
+                        <p
+                            class="text-white/60 text-sm leading-relaxed"
+                            v-html="formatPhrase(feature.desc)"
+                        ></p>
+                    </div>
                 </div>
             </section>
 
             <!-- SECURITY & ABOUT SECTION -->
-            <section class="max-w-6xl mx-auto px-8 py-20 relative z-10">
+            <section class="max-w-6xl mx-auto px-6 md:px-12 py-24 relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- About Card -->
                     <div
-                        class="p-10 border-2 border-white/10 rounded-[40px] bg-white/[0.02] backdrop-blur-xl transition-all hover:shadow-[0_0_40px_rgba(255,255,255,0.05)]"
+                        class="p-8 md:p-10 rounded-[36px] apple-glass-card text-left"
                     >
                         <div
-                            class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6"
+                            class="w-12 h-12 bg-white/[0.04] border border-white/10 rounded-2xl flex items-center justify-center mb-6 text-white"
                         >
                             <span class="material-symbols-outlined text-2xl"
                                 >info</span
                             >
                         </div>
-                        <h2 class="text-3xl font-bold mb-6 text-white">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white tracking-tight">
                             About Privé Extension
                         </h2>
-                        <p class="text-zinc-400 leading-relaxed text-lg mb-8">
+                        <p class="text-white/60 leading-relaxed text-base mb-8">
                             Privé is a local-first password vault designed to
                             give you absolute control over your digital keys. By
                             combining military-grade encryption with the
                             convenience of a browser extension, we enable you
                             to:
                         </p>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3 text-zinc-300">
-                                <span class="material-symbols-outlined"
-                                    >check</span
-                                >
+                        <ul class="space-y-3.5">
+                            <li class="flex items-center gap-3 text-white/80 text-sm">
+                                <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-xs flex-shrink-0 text-white">✓</span>
                                 <span>Encrypted local-only storage</span>
                             </li>
-                            <li class="flex items-center gap-3 text-zinc-300">
-                                <span class="material-symbols-outlined"
-                                    >check</span
-                                >
+                            <li class="flex items-center gap-3 text-white/80 text-sm">
+                                <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-xs flex-shrink-0 text-white">✓</span>
                                 <span>Intelligent form auto-fill</span>
                             </li>
-                            <li class="flex items-center gap-3 text-zinc-300">
-                                <span   class="material-symbols-outlined"
-                                    >check</span
-                                >
+                            <li class="flex items-center gap-3 text-white/80 text-sm">
+                                <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-xs flex-shrink-0 text-white">✓</span>
                                 <span>Zero-knowledge link sharing</span>
                             </li>
                         </ul>
@@ -108,67 +104,58 @@
 
                     <!-- Google Data Card -->
                     <div
-                        class="p-10 border-2 border-white/10 rounded-[40px] bg-white/[0.02] backdrop-blur-xl transition-all hover:shadow-[0_0_40px_rgba(255,255,255,0.05)]"
+                        class="p-8 md:p-10 rounded-[36px] apple-glass-card text-left"
                     >
                         <div
-                            class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6"
+                            class="w-12 h-12 bg-white/[0.04] border border-white/10 rounded-2xl flex items-center justify-center mb-6 text-white"
                         >
                             <span class="material-symbols-outlined text-2xl"
                                 >cloud_sync</span
                             >
                         </div>
-                        <h2 class="text-3xl font-bold mb-6 text-white">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white tracking-tight">
                             Google Data Transparency
                         </h2>
                         <div class="space-y-6">
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0 mt-1">
-                                    <span
-                                        class="material-symbols-outlined text-white/40"
-                                        >fingerprint</span
-                                    >
+                            <div class="flex gap-4 items-start">
+                                <div class="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0 text-white/70">
+                                    <span class="material-symbols-outlined text-lg">fingerprint</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">
+                                    <h4 class="font-semibold text-white mb-1 text-base">
                                         Identity Verification
                                     </h4>
-                                    <p class="text-zinc-500 text-sm">
+                                    <p class="text-white/50 text-sm leading-relaxed">
                                         We use Google OAuth solely to identify
                                         your account and anchor your encrypted
                                         vault.
                                     </p>
                                 </div>
                             </div>
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0 mt-1">
-                                    <span
-                                        class="material-symbols-outlined text-white/40"
-                                        >shield_lock</span
-                                    >
+                            <div class="flex gap-4 items-start">
+                                <div class="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0 text-white/70">
+                                    <span class="material-symbols-outlined text-lg">shield_lock</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">
+                                    <h4 class="font-semibold text-white mb-1 text-base">
                                         Zero-Knowledge Sync
                                     </h4>
-                                    <p class="text-zinc-500 text-sm">
+                                    <p class="text-white/50 text-sm leading-relaxed">
                                         Data is encrypted with your Master PIN
                                         locally. We never see your raw
                                         passwords.
                                     </p>
                                 </div>
                             </div>
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0 mt-1">
-                                    <span
-                                        class="material-symbols-outlined text-white/40"
-                                        >no_accounts</span
-                                    >
+                            <div class="flex gap-4 items-start">
+                                <div class="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0 text-white/70">
+                                    <span class="material-symbols-outlined text-lg">no_accounts</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white mb-1">
+                                    <h4 class="font-semibold text-white mb-1 text-base">
                                         Privacy First
                                     </h4>
-                                    <p class="text-zinc-500 text-sm">
+                                    <p class="text-white/50 text-sm leading-relaxed">
                                         We do not access your files, emails, or
                                         contacts. Your data is yours alone.
                                     </p>
@@ -309,24 +296,22 @@ onMounted(() => {
     transform: translateY(0);
 }
 
-/* HQ Fade Slide Transition */
+/* Apple Fluid Fade Slide Transition */
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 
 .fade-slide-enter-from {
     opacity: 0;
-    scale: 0.8;
-    filter: blur(10px);
-    transform: translateY(20px);
+    filter: blur(8px);
+    transform: translateY(12px) scale(0.97);
 }
 
 .fade-slide-leave-to {
     opacity: 0;
-    scale: 0.8;
-    filter: blur(10px);
-    transform: translateY(-20px);
+    filter: blur(8px);
+    transform: translateY(-12px) scale(0.97);
 }
 
 /* Material Symbols */

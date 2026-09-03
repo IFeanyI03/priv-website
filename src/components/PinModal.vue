@@ -1,10 +1,10 @@
 <template>
-    <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center z-[100] bg-black/50 backdrop-blur-sm" @click.self="close">
-        <div class="bg-[#1e1e1e] p-5 rounded-[17.2px] w-[85%] max-w-[300px] shadow-[0_10px_25px_rgba(0,0,0,0.2)] animate-modal-pop relative text-left">
-            <h3 class="font-bold text-base mb-2 text-white">{{ title }}</h3>
-            <p class="text-[14px] mb-5 text-[#b3b3b3] leading-[1.4]">{{ message }}</p>
+    <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center z-[100] bg-black/60 backdrop-blur-md" @click.self="close">
+        <div class="bg-[#141416]/90 backdrop-blur-2xl border border-white/10 p-6 rounded-[24px] w-[88%] max-w-[320px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.12)] animate-modal-pop relative text-left">
+            <h3 class="font-bold text-base mb-1.5 text-white tracking-tight">{{ title }}</h3>
+            <p class="text-[13px] mb-5 text-white/60 leading-relaxed">{{ message }}</p>
 
-            <div class="flex justify-center gap-2.5 mb-5">
+            <div class="flex justify-center gap-2.5 mb-6">
                 <div v-for="(digit, index) in pinLength" :key="index" class="relative w-[25%] aspect-square">
                     <input 
                         type="text" 
@@ -16,19 +16,19 @@
                         @input="handleInput($event, index)"
                         @keydown="handleKeydown($event, index)"
                         :class="[
-                            'absolute inset-0 w-full h-full text-transparent text-center rounded-[17.2px] border border-[#333] bg-[#121212] transition-all outline-none caret-transparent focus:border-[#888] focus:shadow-[0_0_4px_rgba(255,255,255,0.4)]',
+                            'absolute inset-0 w-full h-full text-transparent text-center rounded-[16px] border border-white/15 bg-white/[0.04] transition-all outline-none caret-transparent focus:border-white/60 focus:bg-white/[0.08] focus:shadow-[0_0_8px_rgba(255,255,255,0.2)]',
                             { '!border-[#ef4444] animate-shake focus:!shadow-none': isError },
-                            { '!border-[#22c55e] focus:!shadow-none': isSuccess }
+                            { '!border-white focus:!shadow-none': isSuccess }
                         ]"
                     />
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none text-white text-[40px] leading-none flex items-center justify-center pb-1">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none text-white text-[32px] leading-none flex items-center justify-center pb-1">
                         {{ pinValues[index] ? '⁕' : '' }}
                     </div>
                 </div>
             </div>
 
             <div class="flex">
-                <button @click="close" class="w-full py-2.5 px-4 rounded-[17.2px] text-[13px] font-semibold cursor-pointer transition-all bg-[#1e1e1e] text-white border border-[#333] hover:bg-[#2a2a2a]">
+                <button @click="close" class="apple-button w-full py-2.5 px-4 rounded-[16px] text-[13px] font-semibold transition-all bg-white/[0.04] text-white/80 border border-white/10 hover:bg-white/[0.08] hover:text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                     Cancel
                 </button>
             </div>
@@ -82,8 +82,8 @@ const handleInput = (e, index) => {
     if (value && index < pinLength - 1) {
         pinInputs.value[index + 1].focus();
     } else if (value && index === pinLength - 1) {
-        // Auto-submit on 4th digit
-        confirm();
+        // Auto-submit on 4th digit — nextTick ensures v-model has committed
+        nextTick(() => confirm());
     }
 };
 
@@ -119,19 +119,19 @@ defineExpose({
 
 <style scoped>
 @keyframes modalPop {
-    0% { opacity: 0; transform: scale(0.95); }
-    100% { opacity: 1; transform: scale(1); }
+    0% { opacity: 0; transform: scale(0.96) translateY(6px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 .animate-modal-pop {
-    animation: modalPop 0.2s ease-out;
+    animation: modalPop 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-5px); }
-    40%, 80% { transform: translateX(5px); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
 }
 .animate-shake {
-    animation: shake 0.4s;
+    animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 </style>

@@ -3,46 +3,34 @@
         class="min-h-screen flex flex-col items-center justify-center px-4"
     >
         <div
-            class="max-w-md mx-auto flex flex-col gap-2 w-full text-center relative z-20"
+            class="max-w-md mx-auto flex flex-col items-center gap-6 w-full text-center relative z-20"
         >
             <div class="flex flex-col gap-2">
-                <h1 class="text-9xl font-black text-white select-none">404</h1>
-                <h2 class="text-4xl font-bold text-white tracking-tight">
+                <h1 class="display-title text-8xl md:text-9xl font-black text-white select-none tracking-tight">404</h1>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
                     Page Not Found
                 </h2>
-                <p class="text-white/40 text-lg">
-                    The path you are looking for does not exist or has been
-                    moved.
+                <p class="text-white/50 text-base md:text-lg max-w-sm mx-auto leading-relaxed">
+                    The link you followed may be broken or the page may have been removed.
                 </p>
             </div>
 
             <router-link
                 to="/"
-                class="inline-flex items-center justify-center px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-all active:scale-95 shadow-lg shadow-white/5"
+                class="apple-button inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-[#050505] font-semibold text-base rounded-full hover:bg-white/90 shadow-[0_12px_28px_-8px_rgba(255,255,255,0.25)]"
             >
-                Return to Home
+                <span class="material-symbols-outlined text-sm">arrow_back</span>
+                <span>Return to Home</span>
             </router-link>
         </div>
     </BackgroundGridBeam>
 </template>
 
 <script setup>
+import { useHead } from "@unhead/vue";
 import BackgroundGridBeam from "../components/BackgroundGridBeam.vue";
+
+useHead({
+    title: "Page Not Found",
+});
 </script>
-
-<style scoped>
-/* Optional: Add a subtle pulse to the large 404 text */
-h1 {
-    animation: subtlePulse 4s ease-in-out infinite;
-}
-
-@keyframes subtlePulse {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-</style>

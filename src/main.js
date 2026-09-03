@@ -1,12 +1,12 @@
 import { createApp } from "vue";
-import { createUnhead } from "@unhead/vue";
+import { createHead } from "@unhead/vue/client";
 import App from "./App.vue";
 import router from "./router";
 import "./style.css";
 import "vue-sonner/style.css";
 
 const app = createApp(App);
-const head = createUnhead();
+const head = createHead();
 
 app.use(router);
 app.use(head);

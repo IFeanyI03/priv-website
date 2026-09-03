@@ -2,10 +2,10 @@
     <div
         class="max-w-4xl mx-auto px-6 py-25 md:py-40 text-left font-titillium text-white"
     >
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+        <h1 class="display-title text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
             Comprehensive Usage Guide
         </h1>
-        <p class="text-white/40 mb-12 text-lg">
+        <p class="text-white/50 mb-14 text-lg">
             A detailed, step-by-step walkthrough of the Privé ecosystem, from
             initial setup to secure credential sharing.
         </p>
@@ -784,6 +784,17 @@
 
 <script setup>
 import { ref } from "vue";
+import { useHead } from "@unhead/vue";
+
+useHead({
+    title: "Usage Guide",
+    meta: [
+        {
+            name: "description",
+            content: "Step-by-step guide to using the Privé password manager browser extension.",
+        },
+    ],
+});
 
 // Store active steps in an array so multiple can be open at once
 const activeSteps = ref([1]);

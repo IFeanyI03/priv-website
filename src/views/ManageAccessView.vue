@@ -4,9 +4,9 @@
             
             <!-- Header -->
             <div class="flex justify-between items-center mb-8">
-                <router-link to="/" class="flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-200">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    <span class="font-medium">Back</span>
+                <router-link to="/" class="apple-button flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-200">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    <span class="font-medium text-sm">Back</span>
                 </router-link>
                 <h1 class="text-2xl font-bold text-white tracking-tight">Manage Access</h1>
                 <div class="w-16"></div>
@@ -14,16 +14,16 @@
 
             <!-- Loading State -->
             <div v-if="isLoading" class="flex flex-col items-center justify-center py-20 gap-4">
-                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white/30"></div>
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white/40"></div>
                 <p class="text-white/40 text-sm">Connecting to Privé extension…</p>
             </div>
             
             <!-- Error State -->
-            <div v-else-if="errorMessage" class="bg-red-500/10 border border-red-500/20 backdrop-blur-xl rounded-2xl p-8 text-center">
-                <span class="material-symbols-outlined text-red-400 block mb-3" style="font-size:40px;">error</span>
+            <div v-else-if="errorMessage" class="bg-red-500/10 border border-red-500/25 backdrop-blur-xl rounded-[28px] p-8 text-center shadow-[0_20px_40px_-15px_rgba(239,68,68,0.2)]">
+                <span class="material-symbols-outlined text-red-400 block mb-3 text-4xl">error</span>
                 <h3 class="text-white font-semibold text-lg mb-2">Something went wrong</h3>
-                <p class="text-white/60 text-sm leading-relaxed whitespace-pre-line">{{ errorMessage }}</p>
-                <button @click="retry" class="mt-6 px-6 py-2 rounded-full bg-white/10 text-white/80 text-sm hover:bg-white/20 transition-colors">
+                <p class="text-white/70 text-sm leading-relaxed whitespace-pre-line">{{ errorMessage }}</p>
+                <button @click="retry" class="apple-button mt-6 px-6 py-2 rounded-full border border-white/20 bg-white/10 text-white text-sm hover:bg-white/20">
                     Try Again
                 </button>
             </div>
@@ -31,33 +31,33 @@
             <!-- Content -->
             <div v-else class="space-y-6">
                 <!-- Credential Header Card -->
-                <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 flex flex-col items-center text-center shadow-2xl">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg" :style="{ backgroundColor: shareDetails?.color || '#333' }">
+                <div class="apple-glass-card rounded-[32px] p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-lg border border-white/10" :style="{ backgroundColor: shareDetails?.color || '#222' }">
                         <img v-if="shareDetails?.logo" :src="shareDetails.logo" class="w-10 h-10 object-contain drop-shadow-md" />
                         <span v-else class="text-white font-bold text-xl">{{ shareDetails?.site?.charAt(0)?.toUpperCase() || '?' }}</span>
                     </div>
-                    <h2 class="text-xl font-bold text-white mb-1">{{ shareDetails?.site }}</h2>
+                    <h2 class="text-xl font-bold text-white mb-1 tracking-tight">{{ shareDetails?.site }}</h2>
                     <p class="text-white/50 text-sm">{{ shareDetails?.username }}</p>
                 </div>
 
                 <!-- Users List -->
                 <div>
-                    <h3 class="text-white/50 font-semibold text-xs uppercase tracking-widest mb-4 px-1">People with Access · {{ users.length }}</h3>
+                    <h3 class="text-white/40 font-semibold text-xs uppercase tracking-widest mb-4 px-2">People with Access · {{ users.length }}</h3>
                     
-                    <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="apple-glass-card rounded-[32px] overflow-hidden">
                         
                         <div v-if="users.length === 0" class="p-10 text-center">
-                            <span class="material-symbols-outlined text-white/20 block mb-2" style="font-size:32px;">group</span>
+                            <span class="material-symbols-outlined text-white/20 block mb-2 text-3xl">group</span>
                             <p class="text-white/40 text-sm">No one has accessed this credential yet.</p>
                         </div>
 
                         <TransitionGroup name="user-list" tag="div">
                             <div v-for="(user, index) in users" :key="user.id" 
                                  class="p-4 flex items-center justify-between group transition-colors duration-150 hover:bg-white/[0.03]"
-                                 :class="{ 'border-t border-white/5': index > 0 }">
+                                 :class="{ 'border-t border-white/[0.06]': index > 0 }">
                                 
                                 <div class="flex items-center gap-4 min-w-0">
-                                    <div class="w-10 h-10 rounded-full bg-white/10 flex-shrink-0 flex items-center justify-center text-white/70 overflow-hidden">
+                                    <div class="w-10 h-10 rounded-full bg-white/10 border border-white/10 flex-shrink-0 flex items-center justify-center text-white/70 overflow-hidden">
                                         <img v-if="user.avatar" :src="user.avatar" class="w-full h-full object-cover" />
                                         <span v-else class="text-base font-medium uppercase">{{ (user.first_name?.[0] || user.email?.[0] || 'U') }}</span>
                                     </div>
@@ -68,9 +68,9 @@
                                 </div>
                                 
                                 <button @click="removeUser(user.id)" 
-                                        class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white/20 hover:bg-red-500/15 hover:text-red-400 transition-all duration-200 active:scale-90"
+                                        class="apple-button w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white/30 hover:bg-red-500/15 hover:text-red-400"
                                         title="Revoke Access">
-                                    <span class="material-symbols-outlined" style="font-size:16px;">close</span>
+                                    <span class="material-symbols-outlined text-sm">close</span>
                                 </button>
                             </div>
                         </TransitionGroup>
@@ -91,9 +91,20 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useHead } from "@unhead/vue";
 import BackgroundGridBeam from "../components/BackgroundGridBeam.vue";
 import PinModal from "../components/PinModal.vue";
 import { toast } from 'vue-sonner';
+
+useHead({
+    title: "Manage Access",
+    meta: [
+        {
+            name: "description",
+            content: "Manage and revoke access to your shared Privé credentials.",
+        },
+    ],
+});
 
 const shareId = ref(new URLSearchParams(window.location.search).get("share_id"));
 
