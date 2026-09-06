@@ -153,9 +153,7 @@ function sendToExtension(message) {
 
 function sendViaContentScript(message) {
     return new Promise((resolve, reject) => {
-        const responseType = message.type === "REMOVE_SHARE_USER" 
-            ? "REMOVE_SHARE_USER_RESPONSE" 
-            : "GET_SHARE_USERS_RESPONSE";
+        const responseType = `${message.type}_RESPONSE`;
         
         let resolved = false;
         const handler = (event) => {
@@ -167,20 +165,32 @@ function sendViaContentScript(message) {
         };
         window.addEventListener("message", handler);
         
-        window.postMessage({
+        const payloadObj = {
             source: "prive-web",
-            type: message.type === "GET_SHARE_USERS" ? "GET_SHARE_USERS" : "REMOVE_SHARE_USER",
-            payload: message.type === "GET_SHARE_USERS" 
-                ? { shareId: message.id }
-                : { shareId: message.shareId, userId: message.userId },
-        }, "*");
+            type: message.type,
+            payload: message,
+        };
+
+        // Send immediately
+        window.postMessage(payloadObj, "*");
         
-        setTimeout(() => {
-            if (!resolved) {
-                window.removeEventListener("message", handler);
-                reject(new Error("Content script bridge timeout"));
+        // Retry every 500ms in case content script isn't loaded yet
+        let attempts = 0;
+        const interval = setInterval(() => {
+            if (resolved) {
+                clearInterval(interval);
+                return;
             }
-        }, 8000);
+            window.postMessage(payloadObj, "*");
+            attempts++;
+            if (attempts >= 10) { // 5 seconds timeout
+                clearInterval(interval);
+                if (!resolved) {
+                    window.removeEventListener("message", handler);
+                    reject(new Error("Content script bridge timeout"));
+                }
+            }
+        }, 500);
     });
 }
 
